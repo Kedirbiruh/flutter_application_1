@@ -74,7 +74,6 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-
           children: <Widget>[
             Row(
               mainAxisSize: MainAxisSize.min,
@@ -89,9 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   child: const Icon(Icons.call_split),
                 ),
-
                 SizedBox(width: 75),
-
                 ElevatedButton(
                   onPressed: _doubleCounter,
                   style: ElevatedButton.styleFrom(
@@ -101,11 +98,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   child: const Icon(Icons.looks_two),
                 ),
-
                 SizedBox(height: 90),
               ],
             ),
-
             Text(
               'Counter App',
               style: Theme.of(
@@ -119,10 +114,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 context,
               ).textTheme.headlineMedium?.copyWith(fontSize: 30),
             ),
-
             // aus material Theme kriegt er style textTheme --headlineMedium
             SizedBox(height: 30),
-
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -136,9 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   child: const Icon(Icons.remove),
                 ),
-
                 SizedBox(width: 10),
-
                 ElevatedButton(
                   onPressed: _resetCounter,
                   style: ElevatedButton.styleFrom(
@@ -148,9 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   child: const Icon(Icons.refresh),
                 ),
-
                 SizedBox(width: 10),
-
                 ElevatedButton(
                   onPressed: _incrementCounter,
                   style: ElevatedButton.styleFrom(
