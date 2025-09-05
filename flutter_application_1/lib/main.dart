@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 19, 18, 18),
         ),
-        scaffoldBackgroundColor: const Color.fromARGB(255, 177, 207, 228),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 236, 237, 238),
       ),
       home: const MyHomePage(title: 'Counter App'),
     );
@@ -26,13 +28,27 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
-  
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
+  void _divideCounter() {
+    setState(() {
+      _counter = (_counter / 2).ceil(); // aufrunden
+      // _counter = (_counter/2).floor(); // abrunden
+      // _counter = (_counter/2).round(); // ab .5 aufrunden, sonst abrunden
+    });
+  }
+
+  void _doubleCounter() {
+    setState(() {
+      _counter = _counter * 2;
+    });
+  }
 
   void _decrementCounter() {
     setState(() {
@@ -62,15 +78,52 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
 
           children: <Widget>[
-            const Text(
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // ElevatedButton(onPressed: _decrementCounter, child: Text("-")),
+                ElevatedButton(
+                  onPressed: _divideCounter,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 133, 135, 223),
+                    padding: const EdgeInsets.all(5),
+                    textStyle: const TextStyle(fontSize: 20),
+                  ),
+                  child: const Icon(Icons.call_split),
+                ),
+
+                SizedBox(width: 75),
+
+                ElevatedButton(
+                  onPressed: _doubleCounter,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 218, 177, 241),
+                    padding: const EdgeInsets.all(5),
+                    textStyle: const TextStyle(fontSize: 20),
+                  ),
+                  child: const Icon(Icons.looks_two),
+                ),
+
+                SizedBox(height: 90),
+              ],
+            ),
+
+            Text(
               'Counter App',
-              // style: TextStyle(color: Colors.white),
+              style: Theme.of(
+                context,
+              ).textTheme.headlineMedium?.copyWith(fontSize: 30),
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-              // aus material Theme kriegt er style textTheme --headlineMedium
+              // style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(
+                context,
+              ).textTheme.headlineMedium?.copyWith(fontSize: 30),
             ),
+
+            // aus material Theme kriegt er style textTheme --headlineMedium
+            SizedBox(height: 30),
 
             Row(
               mainAxisSize: MainAxisSize.min,
